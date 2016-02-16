@@ -35,4 +35,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Whitelist IP for web_console.
+  config.web_console.whitelisted_ips = '10.0.2.2'
 end

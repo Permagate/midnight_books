@@ -1,5 +1,5 @@
 class Book
-  attr_accessor :title, :author, :isbn
+  attr_accessor :title, :author, :isbn, :cover
 
   def initialize(hash)
     hash.each { |key, value| instance_variable_set("@#{key}", value) }
@@ -7,9 +7,9 @@ class Book
 
   def self.from_my_format(book_in_my_format = {})
     mapper = {
-      title: :my_title,
-      author: :my_author,
-      isbn: :my_isbn
+      title: "title",
+      author: "author",
+      cover: "image_url"
     }
     self.new map_hash(book_in_my_format, mapper)
   end

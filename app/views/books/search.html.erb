@@ -1,5 +1,5 @@
 <% @books.each do |book| %>
   <h2><%= book.title %></h2>
-  <p>Author: <%= book.author %></p>
-  <p>ISBN: <%= book.isbn %></p>
+  <%= image_tag(book.cover) %>
+  <p>Author: <%= book.author.name %></p>
 <% end %>

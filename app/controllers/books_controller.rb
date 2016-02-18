@@ -3,13 +3,12 @@ class BooksController < ApplicationController
   end
 
   def search
-    mock_source = (1..100).map do |n|
-      Book.from_my_format({
-        my_title: "Title #{n}",
-        my_author: "Author #{n}",
-        my_isbn: "ISBN #{n}"
-      })
-    end
-    @books = mock_source.take(10)
+    response = Goodreads.new.search_books search_params[:q]
+    @books = response.results.work.map { |work| Book.from_my_format work.best_book }
   end
+
+  private
+    def search_params
+      params.permit(:q)
+    end
 end

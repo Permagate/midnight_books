@@ -14,7 +14,7 @@ module Morphable
       attr_accessor :mapper
     end
 
-    def attr_map(from, to)
+    def attr_map(to, from)
       @mapper ||= {}
       @mapper[to.to_sym] = from.to_sym
     end

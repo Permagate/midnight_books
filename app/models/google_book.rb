@@ -1,5 +1,5 @@
 class GoogleBook < Book
-  attr_map 'volume_info.imageLinks.thumbnail', :cover
+  attr_map :cover, 'volume_info.imageLinks.thumbnail'
 
   def self.search(q = '')
     response = GoogleBooks.search(q, count: 20)

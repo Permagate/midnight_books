@@ -1,6 +1,6 @@
 class GoodreadsBook < Book
-  attr_map :image_url, :cover
-  attr_map 'author.name', :authors
+  attr_map :cover, :image_url
+  attr_map :authors, 'author.name'
 
   def self.search(q = '')
     response = Goodreads.new.search_books q

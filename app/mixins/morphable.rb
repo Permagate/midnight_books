@@ -20,7 +20,7 @@ module Morphable
     end
 
     def search(q = '')
-      Book.descendants.map { |provider| provider.search(q) }.flatten
+      self.descendants.map { |provider| provider.search(q) }.flatten.shuffle
     end
   end
 

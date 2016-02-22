@@ -14,9 +14,13 @@ module Morphable
       attr_accessor :mapper
     end
 
-    def attr_map(to, from)
+    def attr_map(to, from, block = nil)
       @mapper ||= {}
-      @mapper[to.to_sym] = from.to_sym
+      unless block.nil?
+        @mapper[to.to_sym] = [from.to_sym, block]
+      else
+        @mapper[to.to_sym] = from.to_sym
+      end
     end
 
     def search(q = '')
@@ -39,8 +43,13 @@ module Morphable
     def map_attributes
       mapper = self.class.instance_variable_get("@mapper") || {}
       mapper.each do |to, from|
-        original_value = fetch_deep(from)
-        instance_variable_set("@#{to}", original_value)
+        if from.is_a? Enumerable
+          original_value = fetch_deep(from.first)
+          to_value = from[1].call(original_value)
+        else
+          to_value = fetch_deep(from)
+        end
+        instance_variable_set("@#{to}", to_value)
       end
     end
 

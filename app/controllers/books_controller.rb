@@ -3,8 +3,7 @@ class BooksController < ApplicationController
   end
 
   def search
-    response = Goodreads.new.search_books search_params[:q]
-    @books = response.results.work.map { |work| Book.from_my_format work.best_book }
+    @books = Book.search search_params[:q]
   end
 
   private

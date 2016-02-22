@@ -41,3 +41,6 @@ end
 
 # Goodreads API gem
 gem 'goodreads'
+
+# Google Books API gem
+gem 'googlebooks'

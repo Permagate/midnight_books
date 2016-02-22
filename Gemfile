@@ -44,3 +44,6 @@ gem 'goodreads'
 
 # Google Books API gem
 gem 'googlebooks'
+
+# Material Design Lite for Rails
+gem 'material_design_lite-rails'

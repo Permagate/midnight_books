@@ -1,5 +1,5 @@
-<%= form_tag("/books/search", method: "get") do %>
-  <%= label_tag(:q, "Search for a book:") %>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag("Search") %>
-<% end %>
+<div class='center-both'>
+  <%= form_tag('/books/search', method: 'get') do %>
+    <%= text_field_tag(:q, '', class: 'mdl-textfield__input', placeholder: 'Search for a book') %>
+  <% end %>
+</div>

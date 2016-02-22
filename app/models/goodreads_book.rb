@@ -4,6 +4,7 @@ class GoodreadsBook < Book
 
   def self.search(q = '')
     response = Goodreads.new.search_books q
-    response.results.work.map { |work| self.new work.best_book }
+    works = response.results.try(:work) || []
+    works.map { |work| self.new work.best_book }
   end
 end

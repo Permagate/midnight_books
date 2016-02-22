@@ -12,3 +12,10 @@ html, body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.mdl-card__media {
+  &.mdl-card__media--portrait {
+    background-color: transparent;
+    margin: auto;
+  }
+}
